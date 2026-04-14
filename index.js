@@ -168,7 +168,7 @@ const logsData = logsSnap.val() || {};
       await interaction.editReply({ embeds: [embed] });
     }
 
-  } catch (err) {
+  } catch (error) {
     console.error('DEBUG_ERROR:', error);
     await interaction.editReply('❌ 查詢失敗，請稍後再試。');
   }
