@@ -44,7 +44,13 @@ const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
 (async () => {
   try {
     console.log('正在註冊斜線指令...');
-    await rest.put(Routes.applicationGuildCommands(DISCORD_CLIENT_ID, DISCORD_GUILD_ID), { body: commands });
+   await rest.put(
+    Routes.applicationGuildCommands(
+        process.env.DISCORD_CLIENT_ID,  // 加上 process.env.
+        process.env.DISCORD_GUILD_ID    // 加上 process.env.
+    ),
+    { body: commands }
+);
     console.log('斜線指令註冊完成！');
   } catch (err) {
     console.error('指令註冊失敗：', err);
