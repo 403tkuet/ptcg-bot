@@ -83,6 +83,17 @@ client.on('interactionCreate', async interaction => {
       .map(([key, v]) => ({ key, ...v }))
       .sort((a, b) => b.key.localeCompare(a.key));
 
+    // --- 這裡是大廳（所有子指令都看得到的地方） ---
+const teamsData = teamsSnap.val() || {}; 
+const logsData = logsSnap.val() || {};
+
+if (sub === 'all') {
+    // 這裡可以用 teamsData
+} 
+else if (sub === 'show') {
+    // 這裡現在也可以用 teamsData 了！
+}
+
     // ── /ptcg_log show 隊伍名稱 ──
    if (sub === 'show') {
   // 1. 先讓機器人顯示「正在思考...」，避免 3 秒超時
@@ -143,8 +154,6 @@ client.on('interactionCreate', async interaction => {
 
       await interaction.editReply({ embeds: [embed] });
 
-    const teamsData = teamsSnap.val() || {};
-    const logsData  = logsSnap.val()  || {};
     // ── /ptcg_log all ──
     } else if (sub === 'all') {
      const sorted = [...Object.values(teamsData)].sort((a, b) => (a.score ?? 0) - (b.score ?? 0));
