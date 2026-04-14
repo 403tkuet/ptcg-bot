@@ -136,7 +136,7 @@ client.on('interactionCreate', async interaction => {
 
     // ── /ptcg_log all ──
     } else if (sub === 'all') {
-      const sorted = Object.values(teamsData).sort((a, b) => (a.score ?? 0) - (b.score ?? 0));
+     const sorted = [...Object.values(teamsData)].sort((a, b) => (a.score ?? 0) - (b.score ?? 0));
 
       const lines = sorted.map((t, i) => {
         const remain = (t.score ?? 0) - (t.spent ?? 0);
