@@ -14,6 +14,8 @@ const db = admin.database();
 
 // ── Discord Token 與 Client ID ──
 
+const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
+
 // ── Discord Client ──
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
