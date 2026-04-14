@@ -91,7 +91,7 @@ const logsData = logsSnap.val() || {};
     // ── /ptcg_log show 隊伍名稱 ──
    if (sub === 'show') {
   // 1. 先讓機器人顯示「正在思考...」，避免 3 秒超時
-  await interaction.deferReply();
+//  await interaction.deferReply(); 前面寫過
 
   const targetName = interaction.options.getString('隊伍').trim(); // 加上 trim() 去空白
   
