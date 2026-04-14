@@ -169,7 +169,7 @@ const logsData = logsSnap.val() || {};
     }
 
   } catch (err) {
-    console.error(err);
+    console.error('DEBUG_ERROR:', error);
     await interaction.editReply('❌ 查詢失敗，請稍後再試。');
   }
 });
