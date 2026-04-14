@@ -85,15 +85,25 @@ client.on('interactionCreate', async interaction => {
       .sort((a, b) => b.key.localeCompare(a.key));
 
     // ── /ptcg_log show 隊伍名稱 ──
-    if (sub === 'show') {
-      const targetName = interaction.options.getString('隊伍');
-      const teamEntry  = Object.entries(teamsData).find(([, t]) => t.name === targetName);
+   if (sub === 'show') {
+  // 1. 先讓機器人顯示「正在思考...」，避免 3 秒超時
+  await interaction.deferReply();
 
-      if (!teamEntry) {
-        await interaction.editReply(`❌ 找不到隊伍「${targetName}」，請確認名稱是否正確。`);
-        return;
-      }
-      const [teamId, teamInfo] = teamEntry;
+  const targetName = interaction.options.getString('隊伍').trim(); // 加上 trim() 去空白
+  
+  // 2. 改用「模糊比對」或「忽略大小寫」，這對企劃來說比較人性化
+  const teamEntry = Object.entries(teamsData).find(([, t]) => 
+    t.name.trim() === targetName
+  );
+
+  if (!teamEntry) {
+    // 這裡要用 editReply 因為前面有 defer 了
+    await interaction.editReply(`❌ 找不到隊伍「${targetName}」，請確認名稱是否正確。`);
+    return;
+  }
+  
+  const [teamId, teamInfo] = teamEntry;
+  // ... 接下來是顯示邏輯
 
       // 篩選這隊的得分紀錄
       const teamLogs = logList.filter(l => l.teamId === teamId && (l.bgClass === 'win' || l.bgClass === 'loss'));
