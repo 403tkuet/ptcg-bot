@@ -14,7 +14,7 @@ const db = admin.database();
 
 // ── Discord Token 與 Client ID ──
 
-const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
+
 
 // ── Discord Client ──
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -40,7 +40,7 @@ const commands = [
 ].map(cmd => cmd.toJSON());
 
 // ── 註冊斜線指令 ──
-const rest = new REST({ version: '10' }).setToken(DISCORD_TOKEN);
+const rest = new REST({ version: '10' }).setToken(process.env.DISCORD_TOKEN);
 (async () => {
   try {
     console.log('正在註冊斜線指令...');
