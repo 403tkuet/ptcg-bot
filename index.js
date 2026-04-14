@@ -106,7 +106,7 @@ client.on('interactionCreate', async interaction => {
       const recent = teamLogs.slice(0, 5).map(l => {
         const dateMatch = l.html.match(/(\d{7,8})/);
         const date      = dateMatch ? dateMatch[1] : '—';
-        const result    = l.bgClass === 'win' ? '🟢 贏' : '🔴 輸';
+        const result    = l.bgClass === 'win' ? '🔴 贏' : '🟢 輸';
         const mainMatch = l.html.match(/主：([^<　\s]+)/);
         const subMatch  = l.html.match(/副：([^<　\s]+)/);
         const main      = mainMatch ? mainMatch[1] : '';
@@ -126,7 +126,7 @@ client.on('interactionCreate', async interaction => {
           { name: '🎯 目前得分',  value: `**${score}** 分`,    inline: true },
           { name: '💸 花費點數',  value: `**${spent}**`,       inline: true },
           { name: '💰 剩餘點數',  value: `**${remain}**`,      inline: true },
-          { name: '📈 勝負紀錄',  value: `🟢 贏 **${wins}** 場　🔴 輸 **${losses}** 場　勝率 **${winRate}%**` },
+          { name: '📈 勝負紀錄',  value: `🔴 贏 **${wins}** 場　🟢 輸 **${losses}** 場　勝率 **${winRate}%**` },
           { name: '🕐 最近 5 場', value: recent.length > 0 ? recent.join('\n') : '尚無紀錄' },
         )
         .setFooter({ text: 'PTCG 計分板' })
