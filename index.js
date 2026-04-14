@@ -76,8 +76,7 @@ client.on('interactionCreate', async interaction => {
       db.ref('teams').once('value'),
       db.ref('logs').once('value'),
     ]);
-    const teamsData = teamsSnap.val() || {};
-    const logsData  = logsSnap.val()  || {};
+
 
     // logs 轉陣列，最新在前
     const logList = Object.entries(logsData)
@@ -144,6 +143,8 @@ client.on('interactionCreate', async interaction => {
 
       await interaction.editReply({ embeds: [embed] });
 
+    const teamsData = teamsSnap.val() || {};
+    const logsData  = logsSnap.val()  || {};
     // ── /ptcg_log all ──
     } else if (sub === 'all') {
      const sorted = [...Object.values(teamsData)].sort((a, b) => (a.score ?? 0) - (b.score ?? 0));
