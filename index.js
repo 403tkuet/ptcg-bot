@@ -13,7 +13,7 @@ admin.initializeApp({
 const db = admin.database();
 
 // ── Discord Token 與 Client ID ──
-const DISCORD_TOKEN     = "MTA2NTQ3NDQ4OTM4MDUxOTk3Ng.GXeUP7.8nzF7VjvjaIzKCc3MyJMz6kXjmkC6IfOcqU524";
+const DISCORD_TOKEN     = "MTA2NTQ3NDQ4OTM4MDUxOTk3Ng.GM7Ap1.V4ZyK1-Q8kDqmIKMYj8mwFNTX-0beXyLhVBuVo";
 const DISCORD_CLIENT_ID = "1065474489380519976";
 
 // ── Discord Client ──
