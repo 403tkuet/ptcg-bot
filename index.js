@@ -78,14 +78,16 @@ client.on('interactionCreate', async interaction => {
     ]);
 
 
+    const teamsData = teamsSnap.val() || {}; 
+const logsData = logsSnap.val() || {};
+
     // logs 轉陣列，最新在前
     const logList = Object.entries(logsData)
       .map(([key, v]) => ({ key, ...v }))
       .sort((a, b) => b.key.localeCompare(a.key));
 
     // --- 這裡是大廳（所有子指令都看得到的地方） ---
-const teamsData = teamsSnap.val() || {}; 
-const logsData = logsSnap.val() || {};
+
 
 if (sub === 'all') {
     // 這裡可以用 teamsData
