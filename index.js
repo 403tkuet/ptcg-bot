@@ -86,15 +86,7 @@ const logsData = logsSnap.val() || {};
       .map(([key, v]) => ({ key, ...v }))
       .sort((a, b) => b.key.localeCompare(a.key));
 
-    // --- 這裡是大廳（所有子指令都看得到的地方） ---
 
-
-if (sub === 'all') {
-    // 這裡可以用 teamsData
-} 
-else if (sub === 'show') {
-    // 這裡現在也可以用 teamsData 了！
-}
 
     // ── /ptcg_log show 隊伍名稱 ──
    if (sub === 'show') {
