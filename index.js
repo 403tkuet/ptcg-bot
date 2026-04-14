@@ -69,9 +69,7 @@ client.on('interactionCreate', async interaction => {
 
   await interaction.deferReply();
 
-  const sub = interaction.options.getSubcommand();
-
-  try {
+ try {
     const [teamsSnap, logsSnap] = await Promise.all([
       db.ref('teams').once('value'),
       db.ref('logs').once('value'),
@@ -80,6 +78,11 @@ client.on('interactionCreate', async interaction => {
 
     const teamsData = teamsSnap.val() || {}; 
 const logsData = logsSnap.val() || {};
+
+  
+  const sub = interaction.options.getSubcommand();
+
+ 
 
     // logs 轉陣列，最新在前
     const logList = Object.entries(logsData)
